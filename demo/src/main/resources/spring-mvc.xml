@@ -9,29 +9,23 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <mvc:default-servlet-handler/>
+    <context:component-scan base-package="org.doggytty" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
 
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/jsp/"/>
+    <mvc:default-servlet-handler />
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp"></property>
     </bean>
-    <mvc:resources mapping="/static/**" location="/WEB-INF/static/" />
-    <!--<bean id="exceptionHandler" class="com.heika.verify.base.handler.VerifyExceptionHandler"/>-->
 
-    <bean id="multipartResolver"
-          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="defaultEncoding" value="UTF-8"/>
-        <property name="maxUploadSize" value="3145728"/>
-    </bean>
+    <!--<bean id="multipartResolver"-->
+          <!--class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+        <!--<property name="defaultEncoding" value="UTF-8" />-->
+        <!--<property name="maxUploadSize" value="3145728" />-->
+    <!--</bean>-->
 
-    <!--<bean id="logAdvice" class="com.heika.verify.base.advice.LogAdvice"/>-->
-    <!--<aop:config>-->
-        <!--<aop:advisor pointcut="execution(* com.heika.verify..*.controller.*.*(..))"-->
-                     <!--advice-ref="logAdvice"/>-->
-    <!--</aop:config>-->
-    <!--<import resource="spring-interceptor.xml" />-->
 
 </beans>

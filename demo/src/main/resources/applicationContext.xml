@@ -15,14 +15,10 @@
 
 
     <context:annotation-config />
+    <context:property-placeholder location="classpath*:/properties/*.properties" ignore-unresolvable="true"/>
 
-    <context:component-scan base-package="org.doggytty.controllers">
+    <context:component-scan base-package="org.doggytty">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
 
-    <context:component-scan base-package="org.doggytty" />
-
-    <!--<task:executor id="executor" pool-size="10"/>-->
-    <!--<task:scheduler id="scheduler" pool-size="30"/>-->
-    <!--<task:annotation-driven executor="executor" scheduler="scheduler"/>-->
 </beans>

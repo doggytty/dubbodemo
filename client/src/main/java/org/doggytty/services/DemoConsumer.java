@@ -15,7 +15,7 @@ public class DemoConsumer {
     private static Logger logger = LoggerFactory.getLogger(DemoConsumer.class);
 
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("dubbo-consumer.xml");
         IDemoService demoService = (IDemoService) ctx.getBean("demoService");
         logger.info("执行结果：" + demoService.sayHello("hello"));
         try {

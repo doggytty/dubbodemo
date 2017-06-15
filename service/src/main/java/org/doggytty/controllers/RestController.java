@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 public class RestController {
-//    @RequestMapping(value="/{user}", method= RequestMethod.GET)
-//    public T getUser(@PathVariable Long user) {
-//        // ...
-//    }
+    @RequestMapping(value="/{user}", method= RequestMethod.GET)
+    public String getUser(@PathVariable Long user) {
+        return "akjdsf";
+    }
 //
 //    @RequestMapping(value="/{user}/customers", method=RequestMethod.GET)
 //    List<Customer> getUserCustomers(@PathVariable Long user) {
