@@ -1,22 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.doggytty</groupId>
         <artifactId>dubbo-parent</artifactId>
         <version>1.0.1-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
 
     <groupId>org.doggytty</groupId>
-    <artifactId>service</artifactId>
-    <packaging>war</packaging>
+    <artifactId>demo</artifactId>
     <version>1.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
 
-    <name>service</name>
+    <name>demo</name>
     <url>http://maven.apache.org</url>
-
     <properties>
         <api.version>1.0.1-SNAPSHOT</api.version>
     </properties>
@@ -28,38 +27,14 @@
             <version>${api.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.doggytty</groupId>
+            <artifactId>client</artifactId>
+            <version>${api.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-        </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>org.javassist</groupId>-->
-            <!--<artifactId>javassist</artifactId>-->
-            <!--<version>3.21.0-GA</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>commons-io</groupId>-->
-            <!--<artifactId>commons-io</artifactId>-->
-            <!--<version>2.5</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.commons</groupId>-->
-            <!--<artifactId>commons-lang3</artifactId>-->
-            <!--<version>3.5</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -72,7 +47,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>service</finalName>
+        <finalName>demo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
@@ -80,13 +55,13 @@
                 <version>9.3.3.v20150827</version>
                 <configuration>
                     <stopKey>xx</stopKey>
-                    <stopPort>5666</stopPort>
+                    <stopPort>5667</stopPort>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
                     <httpConnector>
-                        <port>9000</port>
+                        <port>9001</port>
                         <idleTimeout>60000</idleTimeout>
                     </httpConnector>
                     <webAppSourceDirectory>WebContent</webAppSourceDirectory>
