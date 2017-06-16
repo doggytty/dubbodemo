@@ -13,7 +13,7 @@
                            http://www.springframework.org/schema/task
                            http://www.springframework.org/schema/task/spring-task.xsd">
 
-    <context:property-placeholder location="classpath*:/properties/*.properties" ignore-unresolvable="true"/>
+    <!--dubbo config-->
     <import resource="classpath:dubbo-provider.xml" />
 
     <context:annotation-config />

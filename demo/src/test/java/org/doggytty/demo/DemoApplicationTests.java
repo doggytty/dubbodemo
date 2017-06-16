@@ -4,13 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
@@ -22,9 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 //当然 你可以声明一个事务管理 每个单元测试都进行事务回滚 无论成功与否
-@TransactionConfiguration(defaultRollback = true)
 //记得要在XML文件中声明事务哦
-@Transactional
 public class DemoApplicationTests {
 
 	@Autowired
@@ -44,7 +39,7 @@ public class DemoApplicationTests {
 
 	@Test
 	//有些单元测试你不希望回滚
-	@Rollback(false)
+//	@Rollback(false)
 	public void ownerId() throws Exception {
 		mockMvc.perform((get("/dubbo/hello"))).andExpect(status().isOk())
 				.andDo(print());

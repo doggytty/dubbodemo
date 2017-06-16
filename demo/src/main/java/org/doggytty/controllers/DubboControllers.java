@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value="/dubbo")
 public class DubboControllers {
 
-    @Qualifier
+    @Autowired
     private IDemoService demoService;
 
     @RequestMapping("/hello")
