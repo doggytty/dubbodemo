@@ -31,6 +31,8 @@
         <springboot.version>1.5.4.RELEASE</springboot.version>
         <dubbo.version>2.5.3</dubbo.version>
         <zookeeper.version>3.4.10</zookeeper.version>
+        <zkclient.version>0.1</zkclient.version>
+        <lombok.version>1.16.16</lombok.version>
 	</properties>
 
     <dependencies>
@@ -233,7 +235,13 @@
             <dependency>
                 <groupId>com.github.sgroschupf</groupId>
                 <artifactId>zkclient</artifactId>
-                <version>0.1</version>
+                <version>${zkclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
 
             <dependency>
