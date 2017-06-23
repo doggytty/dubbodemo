@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.doggytty.dao.mapper.TtyComputerMapper">
+    <resultMap id="BaseResultMap" type="org.doggytty.models.TtyComputer">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="alias" property="alias" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="os" property="os" jdbcType="VARCHAR"/>
+        <result column="bios" property="bios" jdbcType="VARCHAR"/>
+        <result column="cpu" property="cpu" jdbcType="VARCHAR"/>
+        <result column="memory" property="memory" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+    id, name, alias, create_time, update_time, os, bios, cpu, memory
+    </sql>
+
+    <select id="query" resultMap="BaseResultMap" parameterType="int">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from tty_computer
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from tty_computer where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="org.doggytty.models.TtyComputer">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into tty_computer (`name`, alias, create_time, update_time, os, bios, cpu, memory)
+        values (#{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR},
+                #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+                #{os,jdbcType=VARCHAR}, #{bios,jdbcType=VARCHAR},
+                #{cpu,jdbcType=VARCHAR}, #{memory,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="org.doggytty.models.TtyComputer">
+        update tty_computer
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="alias != null">
+                alias = #{alias,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="os != null">
+                os = #{os,jdbcType=VARCHAR},
+            </if>
+            <if test="bios != null">
+                bios = #{bios,jdbcType=VARCHAR},
+            </if>
+            <if test="cpu != null">
+                cpu = #{cpu,jdbcType=VARCHAR},
+            </if>
+            <if test="memory != null">
+                memory = #{memory,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+</mapper>

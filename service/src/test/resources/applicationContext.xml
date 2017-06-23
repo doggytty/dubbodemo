@@ -10,9 +10,9 @@
                            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd">
 
     <!--dubbo config-->
-    <import resource="classpath:dubbo-provider.xml" />
-    <import resource="classpath:hikaricp.xml" />
-    <import resource="classpath:mybatis.xml" />
+    <!--<import resource="classpath:dubbo-provider.xml" />-->
+    <import resource="hikaricp.xml" />
+    <import resource="mybatis.xml" />
 
     <context:annotation-config />
     <!--<context:component-scan base-package="org.doggytty.controllers">-->
